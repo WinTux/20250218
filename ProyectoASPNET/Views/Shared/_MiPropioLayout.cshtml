@@ -1,0 +1,15 @@
+﻿<html>
+    <head>
+        <title>@ViewBag.titulo</title>
+        @RenderSection("cabeza",false)
+    </head>
+    <body>
+        <a asp-controller="Layout" asp-action="Index">Principal</a> |
+        <a asp-controller="Layout" asp-action="Acerca">Sobre nosotros</a> |
+        <a asp-controller="Layout" asp-action="Noticias">Noticias</a>
+        <br><br>
+        @RenderBody()
+        <br><br>
+        Copyright 2025 Educomser S.R.L.
+    </body>
+</html>

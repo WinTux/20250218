@@ -3,7 +3,7 @@
     public class Cuenta
     {
         public int Id { get; set; }
-        public string Ususario { get; set; }
+        public string Usuario { get; set; }
         public string Password { get;set; }
         public string Descripcion {  get; set; }
         public bool Disponible { get; set; }

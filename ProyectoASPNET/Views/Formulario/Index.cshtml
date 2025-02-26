@@ -27,9 +27,9 @@
                     <tr>
                         <td>Género</td>
                         <td>
-                            <input type="radio value="F" asp-for="Cuenta.Genero"> Femenino
+                            <input type="radio" value="F" asp-for="Cuenta.Genero"> Femenino
                             <br>
-                            <input type="radio value="M" asp-for="Cuenta.Genero"> Masculino
+                            <input type="radio" value="M" asp-for="Cuenta.Genero"> Masculino
                         </td>
                     </tr>
                     <tr>
@@ -37,16 +37,21 @@
                         <td>
                             @for (var i = 0; i< Model.Lenguajes.Count;i++) { 
                                 <input type="hidden" asp-for="@Model.Lenguajes[i].Id">
+                                <input type="hidden" asp-for="@Model.Lenguajes[i].Nombre">
+                                <input type="checkbox" asp-for="@Model.Lenguajes[i].estaTickeado">
+                                <label asp-for="@Model.Lenguajes[i].Id">@Model.Lenguajes[i].Nombre</label>
                             }
                         </td>
                     </tr>
                     <tr>
-                        <td></td>
-                        <td></td>
+                        <td>Cargo</td>
+                        <td>
+                            <select asp-for="Cuenta.Cargo" asp-items="@Model.Cargos"></select>
+                        </td>
                     </tr>
                     <tr>
-                        <td></td>
-                        <td></td>
+                        <td><input type="hidden" asp-for="Cuenta.Id"></td>
+                        <td><input type="submit" value="Registrar"></td>
                     </tr>
                 </table>
             </form>

@@ -29,9 +29,16 @@ namespace ProyectoASPNET.Controllers
             cuentaViewModel.Cargos = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(cargos, "Id", "Nombre");// llave->valor
             return View("Index",cuentaViewModel);//View(), View("abc"), View("abc",object)
         }
-
-        public IActionResult Registrar() { 
-            
+        [HttpPost]
+        public IActionResult Registrar(CuentaViewModel cvm, List<Lenguaje> Lenguajes) {
+            cvm.Cuenta.Lenguajes = new List<string>();
+            foreach (var len in Lenguajes) {
+                if (len.estaTickeado) {
+                    cvm.Cuenta.Lenguajes.Add(len.Id);
+                }
+            }
+            ViewBag.cuenta = cvm.Cuenta;
+            return View("Registrado");
         }
     }
 }

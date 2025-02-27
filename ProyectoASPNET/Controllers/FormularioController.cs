@@ -5,6 +5,11 @@ namespace ProyectoASPNET.Controllers
 {
     public class FormularioController : Controller
     {
+        private IWebHostEnvironment webHostEnvironment;
+
+        public FormularioController(IWebHostEnvironment webHostEnvironment) {
+            this.webHostEnvironment = webHostEnvironment;
+        }
         public IActionResult Index()
         {
             var cuentaViewModel = new CuentaViewModel();
@@ -40,5 +45,25 @@ namespace ProyectoASPNET.Controllers
             ViewBag.cuenta = cvm.Cuenta;
             return View("Registrado");
         }
+        #region Formulario que envíe un archivo
+        public IActionResult FormConArchivo() {
+            return View("FormConArchivo",new Producto());
+        }
+        [HttpPost]
+        public IActionResult RegistroProducto(Producto prod, IFormFile foto)
+        {
+            if (foto == null || foto.Length == 0)
+                return Content("Archivo no válido.");
+            else {
+                var ruta = Path.Combine(webHostEnvironment.WebRootPath,"imagenes",foto.FileName);// "a","b","c" -> a\b\c -> a/b/c
+                var stream = new FileStream(ruta,FileMode.Create);
+                foto.CopyToAsync(stream);
+                prod.Foto = foto.FileName;
+                ViewBag.producto = prod;
+                return View();
+            }
+            
+        }
+        #endregion
     }
 }

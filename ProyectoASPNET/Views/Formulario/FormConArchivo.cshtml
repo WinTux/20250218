@@ -1,0 +1,47 @@
+﻿@model ProyectoASPNET.Models.Producto
+<div class"container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <h3 class="align-content-center">REGISTRO DE PRODUCTO</h3>
+            <form asp-asp-controller="Formulario" asp-action="RegistroProducto" method="post" enctype="multipart/form-data">
+                <table class="table table-success">
+                    <tr>
+                        <td>ID</td>
+                        <td>
+                            <input type="text" asp-for="Id">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nombre</td>
+                        <td>
+                            <input type="text" asp-for="Nombre">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Precio</td>
+                        <td>
+                            <input type="text" asp-for="Precio">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Cantidad</td>
+                        <td>
+                            <input type="text" asp-for="Cantidad">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Foto</td>
+                        <td>
+                            <input type="file" name="foto">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" value="Registrar" class="btn btn-success"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+﻿@model ProyectoASPNET.Models.Validacion.Cuenta
+<h3>Página de registro de cuenta usando validación</h3>
+<form asp-controller="Formulario" asp-action="RegistrarConValidacion" method="post">
+    <table>
+        <tr>
+            <td>Usuario</td>
+            <td><input asp-for="usuario"></td>
+            <td><span asp-validation-for="usuario"></span></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" asp-for="password"></td>
+            <td><span asp-validation-for="password"></span></td>
+        </tr>
+        <tr>
+            <td>Edad</td>
+            <td><input asp-for="edad"></td>
+            <td><span asp-validation-for="edad"></span></td>
+        </tr>
+        <tr>
+            <td>email</td>
+            <td><input asp-for="email"></td>
+            <td><span asp-validation-for="email"></span></td>
+        </tr>
+        <tr>
+            <td>Página web</td>
+            <td><input asp-for="paginaweb"></td>
+            <td><span asp-validation-for="paginaweb"></span></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input value="Registrar" type="submit"></td>
+        </tr>
+    </table>
+</form>

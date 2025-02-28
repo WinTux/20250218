@@ -65,5 +65,20 @@ namespace ProyectoASPNET.Controllers
             
         }
         #endregion
+
+        #region Formulario con validación
+
+        public IActionResult FormConValidacion() {
+            return View("FormConValidacion", new ProyectoASPNET.Models.Validacion.Cuenta());
+        }
+        [HttpPost]
+        public IActionResult RegistrarConValidacion(ProyectoASPNET.Models.Validacion.Cuenta cuenta) {
+            if (ModelState.IsValid) {
+                ViewBag.cuenta = cuenta;
+                return View("ExitoValidado");
+            }else
+                return View("FormConValidacion");
+        }
+        #endregion
     }
 }

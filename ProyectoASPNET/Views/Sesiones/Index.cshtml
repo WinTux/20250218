@@ -1,0 +1,23 @@
+﻿@using Microsoft.AspNetCore.Http
+@using ProyectoASPNET.Models
+@using ProyectoASPNET.Herramientas
+
+<h3>Datos simples (usando sesiones)</h3>
+
+Nombre: @Context.Session.GetString("usuario")
+<br />
+Edad: @Context.Session.GetInt32("edad")
+<br />
+
+
+<h3>Datos del producto (usando sesiones)</h3>
+@{
+    Producto producto = ConversorJson.GetObjetoDesdeJson<Producto>(Context.Session,"prod");
+}
+ID: @producto.Id<br />
+Nombre: @producto.Nombre
+<br />
+Precio: @producto.Precio<br />
+Cantidad: @producto.Cantidad
+<br />
+Foto : @producto.Foto

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProyectoASPNET.Herramientas;
 using ProyectoASPNET.Models;
+using ProyectoASPNET.Models.ParaView;
 
 namespace ProyectoASPNET.Controllers
 {
@@ -28,5 +29,12 @@ namespace ProyectoASPNET.Controllers
             ConversorJson.SetObjetoAjson(HttpContext.Session, "prods", productos);
             return View();
         }
+
+        public IActionResult Productos() { 
+            ProductoModel productoModel = new ProductoModel();
+            ViewBag.Productos = productoModel.getTodo();
+            return View();
+        }
+        
     }
 }

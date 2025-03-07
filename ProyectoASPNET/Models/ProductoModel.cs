@@ -8,7 +8,7 @@ namespace ProyectoASPNET.Models.ParaView
             productos = new List<ProyectoASPNET.Models.Sesiones.Producto>()
             {
                 new ProyectoASPNET.Models.Sesiones.Producto { Id = "p01", Nombre = "Laptop", Precio = 1500.00, Foto = "laptop.jpg" },
-                new ProyectoASPNET.Models.Sesiones.Producto { Id = "p02", Nombre = "Netbook", Precio = 900.00, Foto = "netbook.jpg" },
+                new ProyectoASPNET.Models.Sesiones.Producto { Id = "p02", Nombre = "Netbook", Precio = 900.00, Foto = "netbook.webp" },
                 new ProyectoASPNET.Models.Sesiones.Producto { Id = "p03", Nombre = "Tablet", Precio = 800.00, Foto = "tablet.jpg" }
 
             };

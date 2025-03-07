@@ -9,6 +9,9 @@ namespace ProyectoASPNET.Controllers
     {
         public IActionResult Index()
         {
+            var carrito = ConversorJson.GetObjetoDesdeJson<List<Item>>(HttpContext.Session, "carrito");
+            ViewBag.carrito = carrito;
+            ViewBag.total = carrito.Sum(item => item.producto.Precio * item.cantidad);
             return View();
         }
         public IActionResult Agregar(string id)
@@ -25,13 +28,38 @@ namespace ProyectoASPNET.Controllers
                 // Sí existe la variable de sesion carrito
                 List<Item> carrito = ConversorJson.GetObjetoDesdeJson<List<Item>>(HttpContext.Session, "carrito");
                 //TODO crear metodo auxiliar para obtener producto (indice)
-
-                // Si ya existe el producto en el carrito
-
-                // Si no existe el producto en el carrito
+                int indice = ExisteProducto(id);
+                if(indice != -1)
+                {
+                    // Si ya existe el producto en el carrito
+                    carrito[indice].cantidad++;
+                }
+                else
+                {
+                    // Si no existe el producto en el carrito
+                    carrito.Add(new Item { producto = productoModel.getById(id), cantidad = 1 });
+                }
+                ConversorJson.SetObjetoAjson(HttpContext.Session, "carrito", carrito);
             }
 
-            return View();
+            return RedirectToAction("Index");
+        }
+        [Route("Quitar/{id}")]
+        public IActionResult Quitar(string id) {
+            List<Item> carrito = ConversorJson.GetObjetoDesdeJson<List<Item>>(HttpContext.Session, "carrito");
+            int indice = ExisteProducto(id);
+            carrito.RemoveAt(indice);
+            ConversorJson.SetObjetoAjson(HttpContext.Session, "carrito", carrito);
+            return RedirectToAction("Index");
+        }
+        [NonAction]
+        private int ExisteProducto(string id)
+        {
+            List<Item> carrito = ConversorJson.GetObjetoDesdeJson<List<Item>>(HttpContext.Session, "carrito");
+            for (int i = 0; i < carrito.Count; i++)
+                if (carrito[i].producto.Id.Equals(id))
+                    return i;
+            return -1;
         }
     }
 }

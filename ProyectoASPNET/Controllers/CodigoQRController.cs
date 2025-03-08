@@ -11,7 +11,8 @@ namespace ProyectoASPNET.Controllers
         [HttpPost]
         public IActionResult GenerarCodigoQR(string productoid)
         {
-            return View();
+            ViewBag.prodId = productoid;
+            return View("Index");
         }
     }
 }

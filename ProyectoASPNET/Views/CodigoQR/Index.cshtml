@@ -1,4 +1,10 @@
 ﻿<h3>Generador de QR</h3>
 <form method="post" asp-controller="CodigoQR" asp-action="GenerarCodigoQR">
-
+    <input type="text" name="productoid" placeholder="Ingrese su ID de producto" /><br>
+    <input type="submit" value="Generar QR">
 </form>
+
+@if (ViewBag.prodId != null)
+{
+    <codigoqr contenido="@ViewBag.prodId" ancho="200" alto="200"/>
+}

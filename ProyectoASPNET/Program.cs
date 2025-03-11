@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using ProyectoASPNET.Models;
+
 namespace ProyectoASPNET
 {
     public class Program
@@ -9,7 +12,8 @@ namespace ProyectoASPNET
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddSession();
-
+            // Para conexion a base de datos
+            builder.Services.AddDbContext<MiniMarketXContext>(options => options.UseLazyLoadingProxies().UseSqlServer(builder.Configuration.GetConnectionString("minimarket_ddbb")));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

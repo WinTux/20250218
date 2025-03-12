@@ -1,0 +1,26 @@
+﻿@model ProyectoASPNET.Models.basededatos.Producto
+<h3>Registro de producto a la DDBB</h3>
+<form method="post" asp-controller="Producto" asp-action="Agregar">
+    <table class="table">
+        <tr>
+            <td>Nombre:</td>
+            <td><input type="text" asp-for="Nombre" /></td>
+        </tr>
+        <tr>
+            <td>Precio:</td>
+            <td><input type="text" asp-for="Precio" /></td>
+        </tr>
+        <tr>
+            <td>Cantidad:</td>
+            <td><input type="text" asp-for="Cantidad" /></td>
+        </tr>
+        <tr>
+            <td>Estado:</td>
+            <td><input type="checkbox" asp-for="Estado" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Registrar en DDBB" /></td>
+        </tr>
+    </table>
+</form>

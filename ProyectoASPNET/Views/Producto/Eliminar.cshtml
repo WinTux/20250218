@@ -1,0 +1,14 @@
+﻿@model ProyectoASPNET.Models.basededatos.Producto
+<h3>Eliminación de producto en la DDBB</h3>
+<form method="post" asp-controller="Producto" asp-action="Eliminar">
+    <table class="table">
+        <tr>
+            <td>ID:</td>
+            <td><input type="text" asp-for="Id" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Eliminar de la DDBB" /></td>
+        </tr>
+    </table>
+</form>
